@@ -10,7 +10,7 @@
             <li v-for="svc in services" :key="svc.service" class="flex items-center justify-between">
                 <span class="capitalize">{{ svc.service }}</span>
                 <span :class="badgeClass(svc.status)" class="px-2 py-0.5 rounded-full text-xs font-bold">{{ svc.status
-                    }}</span>
+                }}</span>
             </li>
         </ul>
         <p class="mt-2 text-xs text-gray-500">Last updated: {{ lastUpdated || '—' }}</p>
@@ -19,7 +19,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
-import { fetchHealthAll, type HealthStatus } from '@/services/health';
+import { fetchHealthAll, type HealthStatus } from '../../services/health';
 
 const services = ref<HealthStatus[]>([]);
 const lastUpdated = ref<string>('');

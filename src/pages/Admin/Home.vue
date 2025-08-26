@@ -6,5 +6,5 @@
     </div>
 </template>
 <script setup lang="ts">
-import HealthWidget from '@/components/admin/HealthWidget.vue';
+import HealthWidget from '../../components/admin/HealthWidget.vue';
 </script>

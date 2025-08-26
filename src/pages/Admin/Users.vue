@@ -253,7 +253,7 @@ async function toggleStatus(u: User) {
     const next = u.status === 'active' ? 'disabled' : 'active';
     try {
         // optimistic
-        const prev = u.status; u.status = next as any;
+        // const prev = u.status; u.status = next as any;
         await axios.patch(`${API}/admin/users/${u.id}/status`, { status: next });
     } catch (e: any) {
         alert(e?.response?.data?.message ?? 'Failed to change status'); // toast()

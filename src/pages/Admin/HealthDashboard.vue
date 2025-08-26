@@ -34,7 +34,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue';
-import { fetchHealthAll, type HealthStatus } from '@/services/health';
+import { fetchHealthAll, type HealthStatus } from '../../services/health';
 
 const services = ref<HealthStatus[]>([]);
 const lastUpdated = ref<string>('never');

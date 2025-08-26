@@ -1,6 +1,4 @@
-import axios from 'axios';
-
-const API_BASE = import.meta.env.VITE_API_BASE ?? 'http://localhost:3000/v1';
+import api from './api';
 
 export interface HealthStatus {
     service: string;
@@ -10,11 +8,11 @@ export interface HealthStatus {
 }
 
 export async function fetchHealthAll(): Promise<HealthStatus[]> {
-    const { data } = await axios.get<HealthStatus[]>(`${API_BASE}/_health`);
+    const { data } = await api.get<HealthStatus[]>('/_health');
     return data;
 }
 
 export async function fetchHealthOne(service: string): Promise<HealthStatus> {
-    const { data } = await axios.get<HealthStatus>(`${API_BASE}/_health/${service}`);
+    const { data } = await api.get<HealthStatus>(`_health/${service}`);
     return data;
 }
