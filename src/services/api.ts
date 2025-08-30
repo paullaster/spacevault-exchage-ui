@@ -2,7 +2,7 @@
 import axios, { AxiosError } from 'axios';
 
 const api = axios.create({
-    baseURL: import.meta.env.VUE_APP_API_BASE || 'http://localhost:3800/api/v1',
+    baseURL: import.meta.env.VUE_APP_API_BASE || 'http://localhost:3801/v1',
     withCredentials: false,
     timeout: 30000
 });
