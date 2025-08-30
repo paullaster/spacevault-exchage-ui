@@ -24,23 +24,26 @@ import InputField from '../components/InputField.vue';
 import Button from '../components/Button.vue';
 import * as auth from '../services/auth';
 import api from '../services/api';
+import { useToast } from '../composables/useToast';
 
 const email = ref('');
 const password = ref('');
 const loading = ref(false);
 const router = useRouter();
+const toast = useToast();
 
 async function handleRegister() {
     loading.value = true;
     try {
         await auth.register(email.value, password.value);
+        toast.show("Registration successful!");
         const token = localStorage.getItem('access');
         if (token) api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
         // go to KYC if user exists
         router.push('/kyc');
     } catch (e: any) {
         console.error(e);
-        alert(e?.response?.data?.message || e?.message || 'Registration failed.');
+        toast.show(e?.response.data?.message?.message || e?.message || 'Registration failed.');
     } finally {
         loading.value = false;
     }
