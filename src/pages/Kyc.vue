@@ -70,7 +70,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, watch, nextTick } from "vue";
+import { ref, computed, nextTick } from "vue";
 import api from "../services/api";
 import InputField from "../components/InputField.vue";
 import Button from "../components/Button.vue";
