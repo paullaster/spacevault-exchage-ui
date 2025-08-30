@@ -33,6 +33,14 @@ export function useAuth() {
         await loadProfile()
     }
 
+    function setUser(u: any) {
+        user.value = u;
+        if (u) {
+            localStorage.setItem("user", JSON.stringify(u));
+        } else {
+            localStorage.removeItem("user");
+        }
+    }
     async function logout() {
         try {
             if (refreshToken.value) {
@@ -99,5 +107,6 @@ export function useAuth() {
         logout,
         loadProfile,
         tryRefresh,
+        setUser,
     }
 }
