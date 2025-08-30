@@ -29,12 +29,14 @@ import InputField from '../components/InputField.vue';
 import Button from '../components/Button.vue';
 import * as auth from '../services/auth';
 import api from '../services/api';
+import { useToast } from '../composables/useToast';
 
 const email = ref('');
 const password = ref('');
 const remember = ref(true);
 const loading = ref(false);
 const router = useRouter();
+const toast = useToast();
 
 async function handleLogin() {
     loading.value = true;
@@ -47,8 +49,8 @@ async function handleLogin() {
         router.push('/dashboard');
     } catch (e: any) {
         console.error(e);
-        const msg = e?.response?.data?.message || e?.message || 'Login failed';
-        alert(msg);
+        const msg = e?.response?.data?.message?.message || e?.message || 'Login failed';
+        toast.show(msg);
     } finally {
         loading.value = false;
     }
