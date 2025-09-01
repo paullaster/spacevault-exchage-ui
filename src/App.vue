@@ -12,7 +12,7 @@
     </main>
 
     <footer class="py-6 text-center text-sm text-gray-500">
-      © {{ year }} CryptoApp
+      © {{ year }} {{ appTitle }}
     </footer>
   </div>
 </template>
@@ -20,5 +20,6 @@
 <script setup lang="ts">
 import { RouterView } from "vue-router";
 
+const appTitle = (import.meta.env.VUE_APP_TITLE ?? import.meta.env.VUE_APP_NAME ?? 'Crypto Platform') as string;
 const year = new Date().getFullYear();
 </script>

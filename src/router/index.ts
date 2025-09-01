@@ -7,13 +7,24 @@ import HealthDashboard from '../pages/Admin/HealthDashboard.vue';
 import AdminLayout from '../layouts/AdminLayout.vue';
 import { getMe } from "../services/auth";
 import { useAuth } from "../composables/useAuth";
+import DashboardLayout from "../layouts/DashboardLayout.vue";
 
 const routes: Array<RouteRecordRaw> = [
     { path: "/", redirect: "/login" },
     { path: "/login", name: "Login", component: Login },
     { path: "/register", name: "Register", component: Register },
     { path: "/kyc", name: "KYCForm", component: Kyc },
-    { path: "/dashboard", name: "Dashboard", component: Dashboard },
+    {
+        path: "/dashboard",
+        component: DashboardLayout, // <-- Use layout for dashboard
+        // meta: { requiresAuth: true },
+        children: [
+            { path: "", name: "Dashboard", component: Dashboard },
+            // Add more authenticated dashboard pages here:
+            // { path: "profile", name: "Profile", component: ProfilePage },
+            // { path: "settings", name: "Settings", component: SettingsPage },
+        ],
+    },
     { path: '/admin/health', name: 'HealthDashboard', component: HealthDashboard, meta: { requiresAuth: true, requiresAdmin: true } },
     {
         path: '/admin',
