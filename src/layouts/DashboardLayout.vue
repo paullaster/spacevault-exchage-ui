@@ -22,9 +22,9 @@ import { ref, onMounted, onUnmounted } from 'vue';
 import Navbar, { type NavItem } from '../components/Navbar.vue';
 import Topbar from '../components/Topbar.vue';
 import * as auth from '../services/auth';
-import { useToast } from '../composables/useToast';
+// import { useToast } from '../composables/useToast';
 
-const toast = useToast();
+// const toast = useToast();
 
 // env / app identity
 const appTitle = (import.meta.env.VUE_APP_TITLE ?? import.meta.env.VUE_APP_NAME ?? 'Crypto Platform') as string;

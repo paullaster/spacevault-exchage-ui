@@ -53,7 +53,7 @@ export interface NavItem {
     icon?: Component;
 }
 
-const props = defineProps<{
+defineProps<{
     items: NavItem[];
     user?: { name?: string; email: string; avatar?: string };
     appName: string;

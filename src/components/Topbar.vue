@@ -37,8 +37,8 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import ConnectWallet from '@/components/ConnectWallet.vue';
-import { useToast } from '@/composables/useToast';
+import ConnectWallet from '../components/ConnectWallet.vue';
+import { useToast } from '../composables/useToast';
 import type { PropType } from 'vue';
 
 const props = defineProps({

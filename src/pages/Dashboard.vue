@@ -160,11 +160,11 @@ const transactions = ref<any[]>([]);
 
 const nativeTo = ref<string>('');
 const nativeAmount = ref<string>('');
-const erc20Selected = ref<any | null>(null);
-const erc20To = ref<string>('');
-const erc20Amount = ref<string>('');
+// const erc20Selected = ref<any | null>(null);
+// const erc20To = ref<string>('');
+// const erc20Amount = ref<string>('');
 const sendingNative = ref(false);
-const sendingErc20 = ref(false);
+// const sendingErc20 = ref(false);
 const txResult = ref<string>('');
 
 const canTransact = computed(() => !!(safeUser.value?.kycStatus === 'APPROVED' && wallet.value?.address));
