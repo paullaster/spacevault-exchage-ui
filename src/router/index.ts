@@ -8,9 +8,10 @@ import AdminLayout from '../layouts/AdminLayout.vue';
 import { getMe } from "../services/auth";
 import { useAuth } from "../composables/useAuth";
 import DashboardLayout from "../layouts/DashboardLayout.vue";
+import LadningPage from "../pages/LadningPage.vue";
 
 const routes: Array<RouteRecordRaw> = [
-    { path: "/", redirect: "/login" },
+    { path: "/", name: "Landing", component: LadningPage },
     { path: "/login", name: "Login", component: Login },
     { path: "/register", name: "Register", component: Register },
     { path: "/kyc", name: "KYCForm", component: Kyc },
@@ -50,7 +51,7 @@ const router = createRouter({
 
 router.beforeEach(async (to, _from, next) => {
     // Allow login/register always
-    if (to.name === "Login" || to.name === "Register") return next();
+    if (to.name === "Landing" || to.name === "Login" || to.name === "Register") return next();
 
     try {
         const token = localStorage.getItem('access_token');
@@ -84,6 +85,7 @@ router.beforeEach(async (to, _from, next) => {
         }
         return next();
     } catch (err) {
+        console.log('error log: ', err);
         // if token invalid
         return next({ name: "Login" });
     }
